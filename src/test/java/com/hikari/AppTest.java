@@ -156,6 +156,7 @@ public class AppTest {
 
                     list.add(id);
                 }
+                Thread.sleep(20000);
             }
 
             String api = "https://api.douban.com/v2/book/";
@@ -164,12 +165,13 @@ public class AppTest {
                     list) {
 
                 String doc = httpPost(api + s, map, cookie);
+                Thread.sleep(20000);
                 Book book = JSON.parseObject(doc, Book.class);
                 System.out.println(book.toString());
             }
 
 
-        } catch (IOException e) {
+        } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
     }
